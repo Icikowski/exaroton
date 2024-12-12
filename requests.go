@@ -278,7 +278,7 @@ func (rb *requestsBuilder) buildConfigPostRequest(ctx context.Context, serverID,
 }
 
 func (rb *requestsBuilder) buildCreditPoolsGetRequest(ctx context.Context) *http.Request {
-	target := fmt.Sprintf("%s/creditpools", rb.apiURL)
+	target := fmt.Sprintf("%s/billing/pools", rb.apiURL)
 
 	req, _ := http.NewRequestWithContext(ctx, http.MethodGet, target, http.NoBody)
 	rb.setBearer(req)
@@ -287,7 +287,7 @@ func (rb *requestsBuilder) buildCreditPoolsGetRequest(ctx context.Context) *http
 }
 
 func (rb *requestsBuilder) buildCreditPoolGetRequest(ctx context.Context, poolID string) *http.Request {
-	target := fmt.Sprintf("%s/creditpools/%s", rb.apiURL, poolID)
+	target := fmt.Sprintf("%s/billing/pools/%s", rb.apiURL, poolID)
 
 	req, _ := http.NewRequestWithContext(ctx, http.MethodGet, target, http.NoBody)
 	rb.setBearer(req)
@@ -296,7 +296,7 @@ func (rb *requestsBuilder) buildCreditPoolGetRequest(ctx context.Context, poolID
 }
 
 func (rb *requestsBuilder) buildCreditPoolMembersGetRequest(ctx context.Context, poolID string) *http.Request {
-	target := fmt.Sprintf("%s/creditpools/%s/members", rb.apiURL, poolID)
+	target := fmt.Sprintf("%s/billing/pools/%s/members", rb.apiURL, poolID)
 
 	req, _ := http.NewRequestWithContext(ctx, http.MethodGet, target, http.NoBody)
 	rb.setBearer(req)
@@ -305,7 +305,7 @@ func (rb *requestsBuilder) buildCreditPoolMembersGetRequest(ctx context.Context,
 }
 
 func (rb *requestsBuilder) buildCreditPoolServersGetRequest(ctx context.Context, poolID string) *http.Request {
-	target := fmt.Sprintf("%s/creditpools/%s/servers", rb.apiURL, poolID)
+	target := fmt.Sprintf("%s/billing/pools/%s/servers", rb.apiURL, poolID)
 
 	req, _ := http.NewRequestWithContext(ctx, http.MethodGet, target, http.NoBody)
 	rb.setBearer(req)
