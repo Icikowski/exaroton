@@ -24,8 +24,8 @@ type File struct {
 	Children []File `json:"children"`
 }
 
-// ConfigFile represents the information about server's config file options.
-type ConfigFile struct {
+// ConfigOption represents the information about server's config file option.
+type ConfigOption struct {
 	// Key represents the key of the option.
 	Key string `json:"key"`
 	// Label represents the label of the option.
@@ -37,3 +37,9 @@ type ConfigFile struct {
 	// Options represents the list of available option values.
 	Options []string `json:"options"`
 }
+
+// ConfigOptions represents the list of server's config file options.
+type ConfigOptions []ConfigOption
+
+// ConfigValues represents the pairs of option key and value.
+type ConfigValues map[string]any

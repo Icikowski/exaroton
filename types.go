@@ -2,7 +2,6 @@ package exaroton
 
 import (
 	"context"
-	"encoding/json"
 	"io"
 
 	"pkg.icikowski.pl/exaroton/model"
@@ -47,9 +46,9 @@ type FileAPI interface {
 // ConfigAPI represents the API for managing configuration files.
 type ConfigAPI interface {
 	// GetConfig returns the configuration file information.
-	GetConfig(ctx context.Context) (*model.ConfigFile, *RawResponse[model.ConfigFile], error)
+	GetConfig(ctx context.Context) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error)
 	// SetConfig sets the configuration file data.
-	SetConfig(ctx context.Context, config json.RawMessage) (*model.ConfigFile, *RawResponse[model.ConfigFile], error)
+	SetConfig(ctx context.Context, opst model.ConfigValues) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error)
 }
 
 // ServerAPI represents the API for managing servers.

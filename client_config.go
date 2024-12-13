@@ -2,7 +2,6 @@ package exaroton
 
 import (
 	"context"
-	"encoding/json"
 
 	"pkg.icikowski.pl/exaroton/model"
 )
@@ -23,7 +22,7 @@ func newConfigClient(base *baseClient, serverID, path string) ConfigAPI {
 }
 
 // GetConfig implements ConfigAPI.
-func (c *configClient) GetConfig(ctx context.Context) (*model.ConfigFile, *RawResponse[model.ConfigFile], error) {
+func (c *configClient) GetConfig(ctx context.Context) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error) {
 	resp, err := c.do(c.rb.buildConfigGetRequest(
 		ctx,
 		c.serverID,
@@ -33,28 +32,28 @@ func (c *configClient) GetConfig(ctx context.Context) (*model.ConfigFile, *RawRe
 		return nil, nil, err
 	}
 
-	rawResp, err := decodeRawResponse[model.ConfigFile](resp)
+	rawResp, err := decodeRawResponse[model.ConfigOptions](resp)
 	if err != nil {
 		return nil, rawResp, err
 	}
-	return rawResp.Data, rawResp, nil
+	return *rawResp.Data, rawResp, nil
 }
 
 // SetConfig implements ConfigAPI.
-func (c *configClient) SetConfig(ctx context.Context, config json.RawMessage) (*model.ConfigFile, *RawResponse[model.ConfigFile], error) {
+func (c *configClient) SetConfig(ctx context.Context, opts model.ConfigValues) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error) {
 	resp, err := c.do(c.rb.buildConfigPostRequest(
 		ctx,
 		c.serverID,
 		c.path,
-		config,
+		opts,
 	))
 	if err != nil {
 		return nil, nil, err
 	}
 
-	rawResp, err := decodeRawResponse[model.ConfigFile](resp)
+	rawResp, err := decodeRawResponse[model.ConfigOptions](resp)
 	if err != nil {
 		return nil, rawResp, err
 	}
-	return rawResp.Data, rawResp, nil
+	return *rawResp.Data, rawResp, nil
 }

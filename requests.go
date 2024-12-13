@@ -267,10 +267,11 @@ func (rb *requestsBuilder) buildConfigGetRequest(ctx context.Context, serverID, 
 	return req
 }
 
-func (rb *requestsBuilder) buildConfigPostRequest(ctx context.Context, serverID, path string, config json.RawMessage) *http.Request {
+func (rb *requestsBuilder) buildConfigPostRequest(ctx context.Context, serverID, path string, opts model.ConfigValues) *http.Request {
 	target := fmt.Sprintf("%s/servers/%s/files/config/%s", rb.apiURL, serverID, path)
+	body, _ := json.Marshal(opts)
 
-	req, _ := http.NewRequestWithContext(ctx, http.MethodPost, target, bytes.NewReader(config))
+	req, _ := http.NewRequestWithContext(ctx, http.MethodPost, target, bytes.NewReader(body))
 	rb.setBearer(req)
 	rb.setContentType(req, contentTypeJSON)
 
