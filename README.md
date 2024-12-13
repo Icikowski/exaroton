@@ -1,3 +1,5 @@
+![Exaroton API client for Go](assets/cover.png)
+
 # Exaroton API client for Go
 
 Manage your [Exaroton](https://exaroton.com/) Minecraft servers with ease with [Exaroton API](https://developers.exaroton.com/)!
