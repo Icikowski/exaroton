@@ -3,6 +3,7 @@ package model
 // ServerStatus represents the status of a server.
 type ServerStatus uint8
 
+// String returns the string representation of the server status.
 func (s ServerStatus) String() string {
 	switch s {
 	case ServerStatusOffline:
