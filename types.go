@@ -48,7 +48,7 @@ type ConfigAPI interface {
 	// GetConfig returns the configuration file information.
 	GetConfig(ctx context.Context) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error)
 	// SetConfig sets the configuration file data.
-	SetConfig(ctx context.Context, opst model.ConfigValues) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error)
+	SetConfig(ctx context.Context, opts model.ConfigValues) (model.ConfigOptions, *RawResponse[model.ConfigOptions], error)
 }
 
 // ServerAPI represents the API for managing servers.
