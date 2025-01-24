@@ -8,6 +8,11 @@ This module only provides Exaroton API client for REST endpoints. Websocket comm
 
 Client was built according to [official OpenAPI specification](https://developers.exaroton.com/openapi.yaml).
 
+> **⚠️ Warning**
+>
+> This repository is hosted on _git.sr.ht_ and mirrored to GitHub.
+> You should always refer to _git.sr.ht_ version as the primary instance.
+
 ## Usage
 
 ### Obtaining API key
